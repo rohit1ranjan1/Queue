@@ -5,28 +5,33 @@ struct Node{
 int data;
 Node* next;
 };
-Node* head;
+Node* front;
+Node* rear;
 void enqueue(int x){
-Node* temp1=new Node;
-temp1->data=x;
-temp1->next=nullptr;
-if(head==nullptr){
-head=temp1;
+Node* temp=new Node;
+temp->data=x;
+temp->next=nullptr;
+if(front==nullptr){
+front=temp;
+rear=temp;
 return;
 }
-Node* temp2=head;
-while(temp2->next!=nullptr)
-temp2=temp2->next;
-
-temp2->next=temp1;
+rear->next=temp;
+rear=temp;
 };
 void dequeue(){
-Node* temp=head;
-head=temp->next;
+Node* temp=front;
+if(front==rear){
+front=nullptr;
+rear=nullptr;
+free(temp);
+return;
+}
+front=temp->next;
 free(temp);
 };
 void print(){
-Node* temp=head;
+Node* temp=front;
 cout<<"Queue is: ";
 while(temp!=nullptr){
 cout<<temp->data<<" ";
@@ -35,7 +40,8 @@ temp=temp->next;
 cout<<endl;
 };
 int main(){
-head=nullptr;
+front=nullptr;
+rear=nullptr;
 //cout<<1<<" "; 
 enqueue(1);
 enqueue(2);
@@ -51,5 +57,5 @@ return 0;
 
 /*
 Queue is: 1 2 3 4 
-Queue is: 2 3 4
+Queue is: 2 3 4 
 */
