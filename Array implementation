@@ -1,10 +1,12 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
+
 #define MAX 20
 int arr[MAX];
 int rear=-1;
 int front=-1;
+
 void enqueue(int x){
 if(front==-1){
 front++;
@@ -15,6 +17,7 @@ else
 rear++;
 arr[rear]=x;
 }
+
 int dequeue(){
 if(front==-1){
 cout<<"\nQueue Empty!";
@@ -25,6 +28,7 @@ front++;
 return arr[front-1];
 }
 }
+
 int peek(){
 if(front==-1){
 cout<<"\nQueue Empty!";
@@ -33,28 +37,36 @@ return -1;
 else
 return arr[front];
 }
+
 bool isEmpty(){
 if(front==-1)
 return true;
 else
 return false;
 }
+
 void print(){
 cout<<"\nQueue is: ";
 for(int i=front;i<=rear;i++)
 cout<<arr[i]<<" ";
 }
+
 int main(){
 if(isEmpty())
 cout<<"Queue Empty!"<<endl;
+
 enqueue(1);
 enqueue(2);
 enqueue(3);
+
 print();
+
 dequeue();
 print();
+
 cout<<"\nFront of queue is: "<<peek();
 print();
+
 if(!isEmpty())
 cout<<"\nQueue has "<<(rear-front)+1<<" elements...";
 }
