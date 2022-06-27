@@ -42,15 +42,15 @@ cout<<endl;
 int main(){
 front=nullptr;
 rear=nullptr;
-//cout<<1<<" "; 
+
 enqueue(1);
 enqueue(2);
 enqueue(3);
 enqueue(4);
-//cout<<1<<" ";
+
 print();
 dequeue();
-//cout<<2<<" ";
+
 print();
 return 0;
 }
